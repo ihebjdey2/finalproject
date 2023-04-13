@@ -1,0 +1,16 @@
+.root {
+    -fx-background-color: #f7f7f7;
+}
+
+.button {
+    -fx-background-color: #4f8ae8;
+    -fx-text-fill: white;
+}
+
+.button:hover {
+    -fx-background-color: #3664ad;
+}
+
+.error-label {
+    -fx-text-fill: #e60000;
+}

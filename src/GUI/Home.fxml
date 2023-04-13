@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.HomeController" stylesheets="@style.css">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" spacing="20.0" style="-fx-background-color: #343a40;">
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@unnamed.jpg" />
+                </image>
+            </ImageView>
+            <TextField promptText="Rechercher..." style="-fx-background-color: white;" />
+            <Button style="-fx-background-color: #007bff; -fx-text-fill: white;" text="Rechercher" />
+        </HBox>
+    </top>
+
+    <center>
+        <VBox alignment="CENTER" spacing="20.0">
+            <Label graphicTextGap="15.0" prefHeight="21.0" prefWidth="147.0" style="-fx-text-fill: blue;" text="Notre du site" textAlignment="CENTER" />
+            <Label style="-fx-font-size: 24pt;" text="CliniClic" />
+            <HBox alignment="CENTER" spacing="20.0">
+                <Button style="-fx-background-color: #007bff; -fx-text-fill: white;" text="Découvrir Le clinique" />
+                <Button style="-fx-background-color: #007bff; -fx-text-fill: white;" text="Nos Spécialités" />
+            </HBox>
+            <ImageView fitHeight="400.0" fitWidth="600.0" pickOnBounds="true" preserveRatio="true">
+                <image>
+                    <Image url="@../../../logocliniclic.png" />
+                </image>
+            </ImageView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER" spacing="20.0" style="-fx-background-color: #343a40;">
+            <Label style="-fx-text-fill: white;" text="© 2023 - Tous droits réservés" />
+            <Hyperlink style="-fx-text-fill: white;" text="Politique de confidentialité" />
+            <Hyperlink style="-fx-text-fill: white;" text="Conditions d'utilisation" />
+        </HBox>
+    </bottom>
+
+</BorderPane>
