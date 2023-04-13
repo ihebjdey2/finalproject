@@ -101,13 +101,20 @@ public class LoginController implements Initializable {
 //} else {
 //    errorLabel.setText("Nom d'utilisateur ou mot de passe incorrect");
 //}
-FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml")); // Code pour annuler l'inscription
+try {
+        // Charger le fichier FXML de la page d'inscription
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Home.fxml"));
         Parent root = loader.load();
-        LoginController loginController = loader.getController();
+        // Créer un nouveau stage pour la fenêtre d'inscription
+        Stage stage = new Stage();
         Scene scene = new Scene(root);
-        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.setScene(scene);
+         stage.setTitle("Page d'accueil");
+        
         stage.show();
+       
+    } catch (IOException e) {
+    }
     
     }
 
