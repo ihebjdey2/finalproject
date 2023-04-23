@@ -11,6 +11,8 @@ import java.net.URL;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,6 +55,8 @@ private ComboBox<String> roleComboBox;
     
     @FXML
     private TextField GenreTextField;
+    
+    ObservableList<String> typeList = FXCollections.observableArrayList("Admin", "Patient","Medecin");
 
     /**
      * Initializes the controller class.
@@ -60,16 +64,19 @@ private ComboBox<String> roleComboBox;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+        roleComboBox.setItems(typeList);
+        
     }
 
     @FXML
     private void validerAction(ActionEvent event) {
-        UserService us = new UserService();
+        UserService us = new UserService(); 
         String email = emailTextField.getText();
-       String roles = roleComboBox.getValue();
+        
+        String roles = roleComboBox.getValue();
 
         String password = pwdPasswordField.getText();
-       Date date_naissance = java.sql.Date.valueOf(dateNaissancePicker.getValue());  //LocalDate dateNaissance = dateNaissancePicker.getValue();
+        Date date_naissance = java.sql.Date.valueOf(dateNaissancePicker.getValue());  //LocalDate dateNaissance = dateNaissancePicker.getValue();
         String nom = nomTextField.getText();
         String prenom = prenomTextField.getText();
         String genre = GenreTextField.getText();

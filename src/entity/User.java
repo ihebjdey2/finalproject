@@ -68,9 +68,9 @@ public class User {
     }
 
     public User(String email, String password, java.sql.Date date_naissance, String nom, String prenom, String genre) {
-          this.email = email;
-          this.password = password;
-           this.date_naissance = date_naissance;
+        this.email = email;
+        this.password = password;
+        this.date_naissance = date_naissance;
         this.nom = nom;
         this.prenom = prenom;
         this.genre = genre;
