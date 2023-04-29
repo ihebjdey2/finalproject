@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="469.0" prefWidth="602.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
+<AnchorPane prefHeight="469.0" prefWidth="602.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.LoginController">
    <children>
         <Label layoutX="228.0" layoutY="48.0" text="Connexion">
             <font>
@@ -15,8 +15,8 @@
             </font>
         </Label>
         <Label fx:id="errorLabel" layoutX="74.0" layoutY="142.0" styleClass="error-label" text="Label" visible="false" />
-        <TextField fx:id="usernameTextField" layoutX="200.0" layoutY="138.0" promptText="Email" />
-        <PasswordField fx:id="passwordTextField" layoutX="200.0" layoutY="206.0" promptText="Mot de Passe" />
+        <TextField fx:id="tfmail" layoutX="200.0" layoutY="138.0" promptText="Email" />
+        <PasswordField fx:id="tfmdp" layoutX="200.0" layoutY="206.0" promptText="Mot de Passe" />
         <Button fx:id="loginButton" layoutX="137.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleLoginAction" prefHeight="30.0" prefWidth="126.0" styleClass="button" text="Se connecter" />
         <Button fx:id="signupButton" layoutX="352.0" layoutY="309.0" mnemonicParsing="false" onAction="#handleSignupAction" prefHeight="30.0" prefWidth="132.0" styleClass="button" text="S'inscrire" />
       <Label layoutX="87.0" layoutY="134.0" prefHeight="25.0" prefWidth="101.0" text="Email:" />

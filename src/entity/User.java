@@ -11,6 +11,7 @@ package entity;
  *
  * @author Asus
  */
+import com.sun.faces.config.WebConfiguration;
 import java.util.Date;
 
 public class User {
@@ -23,6 +24,8 @@ public class User {
     private String nom;
     private String prenom;
     private String genre;
+    
+    public static User Current_User;
 
     public User() {
     }
@@ -68,12 +71,16 @@ public class User {
     }
 
     public User(String email, String password, java.sql.Date date_naissance, String nom, String prenom, String genre) {
-        this.email = email;
-        this.password = password;
-        this.date_naissance = date_naissance;
+          this.email = email;
+          this.password = password;
+           this.date_naissance = date_naissance;
         this.nom = nom;
         this.prenom = prenom;
         this.genre = genre;
+    }
+
+    public User(String mail, String role, String mdp, WebConfiguration.DisableUnicodeEscaping disableUnicodeEscaping, java.sql.Date date, String nom, String prenom, String genre) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
    
@@ -148,6 +155,14 @@ public class User {
 
     public void setGenre(String genre) {
         this.genre = genre;
+    }
+
+    public static void setCurrent_User(User Current_User) {
+        User.Current_User = Current_User;
+    }
+
+    public static User getCurrent_User() {
+        return Current_User;
     }
 
     @Override

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="851.0" style="-fx-background-color: #F2F2F2;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionController">
+<AnchorPane id="AnchorPane" prefHeight="560.0" prefWidth="851.0" style="-fx-background-color: #F2F2F2;" stylesheets="@style.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GUI.InscriptionController">
     <children>
         <VBox alignment="CENTER" layoutX="170.0" layoutY="57.0" prefHeight="325.0" prefWidth="490.0" spacing="10.0">
             <children>
@@ -23,19 +23,19 @@
                 </Label>
                 <HBox spacing="10.0">
                     <children>
-                        <TextField fx:id="nomTextField" prefWidth="150.0" promptText="Nom" />
-                        <TextField fx:id="prenomTextField" prefWidth="150.0" promptText="Prénom" />
+                        <TextField fx:id="tfnom" prefWidth="150.0" promptText="Nom" />
+                        <TextField fx:id="tfprenom" prefWidth="150.0" promptText="Prénom" />
                     </children>
                 </HBox>
                 <HBox spacing="10.0">
                     <children>
-                        <TextField fx:id="emailTextField" prefWidth="150.0" promptText="Email" />
-                  <TextField fx:id="GenreTextField" layoutX="10.0" layoutY="10.0" prefWidth="150.0" promptText="Genre" />
+                        <TextField fx:id="tfemail" prefWidth="150.0" promptText="Email" />
+                  <TextField fx:id="tfgenre" layoutX="10.0" layoutY="10.0" prefWidth="150.0" promptText="Genre" />
                     </children>
                 </HBox>
                 <HBox spacing="10.0">
                     <children>
-                        <PasswordField fx:id="pwdPasswordField" prefWidth="150.0" promptText="Mot de passe" />
+                        <PasswordField fx:id="tfmdp" prefWidth="150.0" promptText="Mot de passe" />
                         <ComboBox fx:id="roleComboBox" prefWidth="150.0" promptText="Sélectionner un rôle">
                             <items>
                                 <FXCollections fx:factory="observableArrayList">
@@ -57,7 +57,7 @@
                 </HBox>
                 <HBox spacing="10.0">
                     <children>
-                        <DatePicker fx:id="dateNaissancePicker" prefWidth="150.0" promptText="Date de naissance" />
+                        <DatePicker fx:id="tfdate" prefWidth="150.0" promptText="Date de naissance" />
                     </children>
                 </HBox>
                 <HBox spacing="10.0" />

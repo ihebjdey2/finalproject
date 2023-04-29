@@ -6,6 +6,9 @@
 package services;
 
 import entity.User;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
@@ -13,7 +16,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import tools.BCrypt;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import static jdk.nashorn.internal.runtime.Debug.id;
 import tools.MaConnection;
 
 
@@ -22,7 +33,7 @@ import tools.MaConnection;
  * @author Ayoub
  */
 public class UserService {
-    
+    public static PreparedStatement ps;
     Connection cnx;
     public static int code;
     public UserService() {
@@ -36,7 +47,7 @@ public class UserService {
             PreparedStatement st = cnx.prepareStatement(req);
             st.setString(1, u.getEmail());
             st.setString(2, u.getRoles());
-            st.setString(3, BCrypt.hashpw(u.getPassword(), BCrypt.gensalt()));
+            st.setString(3, u.getPassword());
             st.setBoolean(4, false);
             st.setDate(5, (Date) u.getDate_naissance());
             st.setString(6,u.getNom());
@@ -103,7 +114,7 @@ public class UserService {
             PreparedStatement st = cnx.prepareStatement(req);
             st.setString(1, u.getEmail());
             st.setString(2, u.getRoles());
-            st.setString(3, BCrypt.hashpw(u.getPassword(), BCrypt.gensalt()));
+            st.setString(3, u.getPassword());
             st.setBoolean(4, u. getIs_verified());
             st.setDate(5, (Date) u.getDate_naissance());
             st.setString(6,u.getNom());
@@ -131,15 +142,62 @@ public class UserService {
         }
     }
 
+public User getUserByMail(String mail) throws SQLException {
+        User u=null;
 
-    
+        try{
+        String req="select * from user where email='"+mail+"'";
+        ps=cnx.prepareStatement(req);
+        ResultSet rst=ps.executeQuery();
+        if(rst.first()){
+            u=new User(rst.getInt(1),rst.getString(2),rst.getString(3),rst.getString(4),
+                rst.getBoolean(5),rst.getDate(6),rst.getString(7),rst.getString(8),rst.getString(9));
+              }
+        
+        }catch (SQLException ex){
+            System.out.println(ex.getMessage());
+            return u;
+        }
+        return u;
+    }
+/***********************************************************************************************/
+    public void sendEmail(String email,String login) throws IOException {
+        //  la session pour l'envoie d'un email
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.port", "587");
+        Session session = Session.getInstance(props,
+                new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication("clinicesprit2023@gmail.com", "jzwoflvznqkdimjn");
+            }
+        });
+        try {
+            // Création de l'objet Message
+            Message message = new MimeMessage(session);
+            // from 
+            message.setFrom(new InternetAddress("clinicesprit2023@gmail.com"));
+            // Recipients
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email));
+            // Objet de l'email
+            message.setSubject("Welcome to Clinic! Let's get you set up");
+        //////////////////////////////////////////////////////    
+            message.setSentDate(new Date(System.currentTimeMillis()));
+            String htmlBody = new String(Files.readAllBytes(Paths.get("src/mail.html")));
+            String htmlBody2 = new String(htmlBody).replace("XXYY",login);
+          
+            message.setContent(htmlBody2, "text/html");
+                     
+            //  Envoyer le message
+            Transport.send(message);
+        } catch (MessagingException e) {
+            System.out.println(e.getMessage());
+        }
+
+    }  
 
 
     
 }
-    
-    
-    
-    
-    
-   
